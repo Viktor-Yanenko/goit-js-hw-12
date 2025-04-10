@@ -7,4 +7,139 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
-@import url('./container.css');
+@import url('./loader.css');
+
+li {
+  display: inline-block;
+  margin: 10px;
+}
+
+img {
+  width: 360px;
+  height: 200px
+}
+
+form {
+  margin: 24px auto;
+  width: max-content;
+}
+
+form input {
+  outline: none;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  background-color: transparent;
+  width: 272px;
+  height: 40px;
+  padding: 8px 16px;
+  transition: border-color 0.2s ease-in-out;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
+}
+
+form input:hover,
+form input:focus {
+  border-color: #000;
+}
+
+form input:active,
+form input:focus,
+form input:not(:placeholder-shown) {
+  border-color: #4e75ff;
+  color: #2e2f42;
+}
+
+form button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: #4e75ff;
+  height: 40px;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  transition: background-color 250ms cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+form button:hover {
+  background-color: #6c8cff;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.gallery-item {
+  border: 1px solid #808080;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+}
+
+.photo-stats-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-stats-item {
+  text-align: center;
+}
+
+.photo-stats-heads {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.photo-stats-number {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.load-btn {
+  display: block;
+  margin: 32px auto;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 125px;
+  height: 40px;
+  background-color: #4e75ff;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  transition: background-color 250ms cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.load-btn:hover,
+.load-btn:focus{
+  background-color:#6c8cff;
+}
+
+.hide-btn{
+  display: none;
+}
