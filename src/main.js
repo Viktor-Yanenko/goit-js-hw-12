@@ -14,7 +14,7 @@ const form = document.querySelector('.form');
 form.addEventListener('submit', handleSubmit);
 
 const loadMoreBtn = document.querySelector('#load-btn');
-loadMoreBtn.addEventListener('click', loadMore);
+loadMoreBtn.addEventListener('click', onLoadMore);
 
 let page = 1;
 let queryValue;
@@ -71,21 +71,36 @@ async function handleSubmit(event) {
   form.reset();
 }
 
-async function loadMore() {
-  loadMoreBtn.disabled = true;
+async function onLoadMore() {
   page++;
+  // loadMoreBtn.disabled = true;
+  hideLoadMoreButton();
   showLoader();
   try {
-    if (page === totalPages) {
+    const response = await getImagesByQuery(queryValue, page);
+    createGallery(response.data.hits);
+    // loadMoreBtn.disabled = false;
+    showLoadMoreButton();
+
+    const card = document.querySelector('.gallery-item');
+    if (card) {
+      const cardHeight = card.getBoundingClientRect().height;
+      window.scrollBy({
+        left: 0,
+        top: cardHeight * 2,
+        behavior: 'smooth',
+      });
+    }
+
+    if (page >= totalPages) {
       hideLoadMoreButton();
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
-        position: 'topRight'
-      })
-    }    
-    const response = await getImagesByQuery(queryValue, page);
-    createGallery(response.data.hits);
-    loadMoreBtn.disabled = false;
+        position: 'topRight',
+      });
+    } else {
+      showLoadMoreButton();
+    }
   } catch (error) {
     iziToast.error({
       messageColor: '#fafafb',
@@ -98,4 +113,3 @@ async function loadMore() {
     hideLoader();
   }
 }
-
